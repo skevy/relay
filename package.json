@@ -1,7 +1,7 @@
 {
   "name": "react-relay",
   "description": "A framework for building data-driven React applications.",
-  "version": "0.6.0",
+  "version": "0.6.0-ccinternal",
   "keywords": [
     "graphql",
     "react",
@@ -20,7 +20,7 @@
   "main": "lib/Relay.js",
   "repository": "facebook/relay",
   "scripts": {
-    "build": "gulp",
+    "build": "gulp native",
     "lint": "eslint .",
     "prepublish": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json && npm run build",
     "test": "f() { EXIT=0; npm run typecheck || EXIT=$?; NODE_ENV=test jest $@ || EXIT=$?; exit $EXIT; }; f",
