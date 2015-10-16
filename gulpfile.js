@@ -22,6 +22,8 @@ var objectAssign = require('object-assign');
 var runSequence = require('run-sequence');
 var webpackStream = require('webpack-stream');
 
+var IS_NATIVE_BUILD = false;
+
 var DEVELOPMENT_HEADER = [
   '/**',
   ' * Relay v<%= version %>',
@@ -57,12 +59,17 @@ var babelOpts = {
 };
 
 var buildDist = function(opts) {
+  var reactLib = IS_NATIVE_BUILD ? 'react-native' : 'react';
+
+  var externals = {
+    'react-dom': 'ReactDOM'
+  };
+
+  externals[reactLib] = 'React';
+
   var webpackOpts = {
     debug: opts.debug,
-    externals: {
-      'react': 'React',
-      'react-dom': 'ReactDOM'
-    },
+    externals: externals,
     output: {
       filename: opts.output,
       libraryTarget: 'umd',
@@ -166,4 +173,10 @@ gulp.task('watch', function() {
 
 gulp.task('default', function(cb) {
   runSequence('clean', 'website:check-version', ['dist', 'dist:min'], cb);
+});
+
+gulp.task('native', function(cb) {
+  IS_NATIVE_BUILD = true;
+  babelOpts._moduleMap['React'] = 'react-native';
+  runSequence('clean', ['dist', 'dist:min'], cb);
 });
