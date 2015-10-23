@@ -27,9 +27,12 @@
     "typecheck": "flow check src/",
     "update-schema": "babel-node ./scripts/jest/updateSchema.js"
   },
+  "browser": {
+    "./RelayUnstableBatchedUpdates": "./RelayNativeUnstableBatchedUpdates.js"
+  },
   "dependencies": {
     "babel-runtime": "5.8.24",
-    "fbjs": "^0.5.1",
+    "fbjs": "0.4.0-ccinternal",
     "react-static-container": "^1.0.0-alpha.1"
   },
   "peerDependencies": {
@@ -38,7 +41,6 @@
     "react-dom": "^0.14.0"
   },
   "devDependencies": {
-    "babel": "^5.8.25",
     "babel-core": "^5.8.25",
     "babel-eslint": "^4.1.1",
     "del": "^1.2.0",
