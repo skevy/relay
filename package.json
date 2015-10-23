@@ -22,13 +22,13 @@
   "scripts": {
     "build": "gulp native",
     "lint": "eslint .",
-    "prepublish": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json && npm run build",
+    "prepublish": "npm run build",
     "test": "f() { EXIT=0; npm run typecheck || EXIT=$?; NODE_ENV=test jest $@ || EXIT=$?; exit $EXIT; }; f",
     "typecheck": "flow check src/",
     "update-schema": "babel-node ./scripts/jest/updateSchema.js"
   },
   "browser": {
-    "./RelayUnstableBatchedUpdates": "./RelayNativeUnstableBatchedUpdates.js"
+    "./lib/RelayUnstableBatchedUpdates.js": "./lib/RelayNativeUnstableBatchedUpdates.js"
   },
   "dependencies": {
     "babel-runtime": "5.8.24",

@@ -13,6 +13,6 @@
 
 'use strict';
 
-var ReactNative = require('react-native');
+var ReactNative = require('ReactNative');
 
 module.exports = ReactNative.unstable_batchedUpdates;
