@@ -21,6 +21,7 @@
   "repository": "facebook/relay",
   "scripts": {
     "build": "gulp native",
+    "lint": "eslint .",
     "prepublish": "npm run build",
     "test": "f() { EXIT=0; npm run typecheck || EXIT=$?; NODE_ENV=test jest $@ || EXIT=$?; exit $EXIT; }; f",
     "typecheck": "flow check src/",
@@ -28,7 +29,7 @@
     "lint": "eslint ."
   },
   "browser": {
-    "./RelayUnstableBatchedUpdates": "./RelayNativeUnstableBatchedUpdates.js"
+    "./lib/RelayUnstableBatchedUpdates.js": "./lib/RelayNativeUnstableBatchedUpdates.js"
   },
   "dependencies": {
     "babel-runtime": "5.8.24",
